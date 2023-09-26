@@ -29,7 +29,6 @@ class Author(db.Model):
 
 class Post(db.Model):
     __tablename__ = 'posts'
-    # Add validations and constraints 
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
@@ -47,7 +46,6 @@ class Post(db.Model):
     
     @validates('content')
     def validate_content(self, key, content):
-        # Ensure post content is at least 250 characters long
         if content and len(content) < 250:
             raise ValueError("Post content must be at least 250 characters long")
         return content
